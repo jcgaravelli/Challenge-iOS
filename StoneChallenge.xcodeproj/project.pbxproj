@@ -7,21 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		502878872A4954C5001832ED /* Rick_Morty_Font.otf in Resources */ = {isa = PBXBuildFile; fileRef = 502878862A4954C5001832ED /* Rick_Morty_Font.otf */; };
+		509762502A48E68400AC6066 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5097624F2A48E68400AC6066 /* HomeViewController.swift */; };
+		509762582A493C4800AC6066 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509762572A493C4800AC6066 /* UIButton.swift */; };
+		5097625A2A493CA100AC6066 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509762592A493CA100AC6066 /* UIView+Constraints.swift */; };
+		5097625C2A493D1F00AC6066 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5097625B2A493D1F00AC6066 /* StackView.swift */; };
 		C1D0693C2767DA8B00883CE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D0693B2767DA8B00883CE8 /* AppDelegate.swift */; };
 		C1D0693E2767DA8B00883CE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D0693D2767DA8B00883CE8 /* SceneDelegate.swift */; };
 		C1D069452767DA8C00883CE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1D069442767DA8C00883CE8 /* Assets.xcassets */; };
 		C1D069482767DA8C00883CE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1D069462767DA8C00883CE8 /* LaunchScreen.storyboard */; };
-		C1D069552767DE6800883CE8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D069542767DE6800883CE8 /* HomeViewController.swift */; };
+		C1D069552767DE6800883CE8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D069542767DE6800883CE8 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		502878862A4954C5001832ED /* Rick_Morty_Font.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rick_Morty_Font.otf; sourceTree = "<group>"; };
+		5097624F2A48E68400AC6066 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		509762572A493C4800AC6066 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		509762592A493CA100AC6066 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		5097625B2A493D1F00AC6066 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		C1D069382767DA8B00883CE8 /* StoneChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoneChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1D0693B2767DA8B00883CE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1D0693D2767DA8B00883CE8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C1D069442767DA8C00883CE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1D069472767DA8C00883CE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1D069492767DA8C00883CE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C1D069542767DE6800883CE8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C1D069542767DE6800883CE8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +45,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		509762512A490BF300AC6066 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				502878862A4954C5001832ED /* Rick_Morty_Font.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		509762562A493BF100AC6066 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5097625B2A493D1F00AC6066 /* StackView.swift */,
+				509762572A493C4800AC6066 /* UIButton.swift */,
+				509762592A493CA100AC6066 /* UIView+Constraints.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		C1D0692F2767DA8B00883CE8 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +101,7 @@
 		C1D069502767DBBD00883CE8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				509762512A490BF300AC6066 /* Font */,
 				C1D069462767DA8C00883CE8 /* LaunchScreen.storyboard */,
 				C1D069442767DA8C00883CE8 /* Assets.xcassets */,
 			);
@@ -91,7 +120,9 @@
 		C1D069532767DE4E00883CE8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C1D069542767DE6800883CE8 /* HomeViewController.swift */,
+				C1D069542767DE6800883CE8 /* HomeView.swift */,
+				5097624F2A48E68400AC6066 /* HomeViewController.swift */,
+				509762562A493BF100AC6066 /* Extension */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -122,8 +153,9 @@
 		C1D069302767DA8B00883CE8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					C1D069372767DA8B00883CE8 = {
 						CreatedOnToolsVersion = 13.0;
@@ -155,6 +187,7 @@
 			files = (
 				C1D069482767DA8C00883CE8 /* LaunchScreen.storyboard in Resources */,
 				C1D069452767DA8C00883CE8 /* Assets.xcassets in Resources */,
+				502878872A4954C5001832ED /* Rick_Morty_Font.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,9 +198,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				509762582A493C4800AC6066 /* UIButton.swift in Sources */,
+				5097625C2A493D1F00AC6066 /* StackView.swift in Sources */,
 				C1D0693C2767DA8B00883CE8 /* AppDelegate.swift in Sources */,
 				C1D0693E2767DA8B00883CE8 /* SceneDelegate.swift in Sources */,
-				C1D069552767DE6800883CE8 /* HomeViewController.swift in Sources */,
+				5097625A2A493CA100AC6066 /* UIView+Constraints.swift in Sources */,
+				C1D069552767DE6800883CE8 /* HomeView.swift in Sources */,
+				509762502A48E68400AC6066 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +354,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -346,6 +384,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
