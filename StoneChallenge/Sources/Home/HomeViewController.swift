@@ -8,12 +8,23 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
-    internal let homeView: HomeView = HomeView()
-    
+
+    var viewModel: HomeViewModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.addSubviewInsideSafeArea(HomeView())
+        setupView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel?.viewWillAppear()
+    }
+
+    func setupView() {
+        let viewModel = HomeViewModel()
+        let view = HomeView(viewModel: viewModel)
+        self.viewModel = viewModel
+        self.view.addSubviewInsideSafeArea(view)
     }
 }

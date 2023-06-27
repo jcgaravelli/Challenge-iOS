@@ -8,8 +8,11 @@
 import UIKit
 
 public extension UIButton {
-    
-    func configSelectionButton(tag: Int, identifier: String, text: String) {
+
+    func configSelectionButton(tag: Int,
+                               identifier: String,
+                               text: String,
+                               action: Selector) {
         self.accessibilityIdentifier = identifier
         self.backgroundColor = .blue
         self.clipsToBounds = true
@@ -20,6 +23,8 @@ public extension UIButton {
         self.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.setTitle(text, for: .normal)
+        self.addTarget(self, action: action,
+                       for: .touchUpInside)
         self.tag = tag
     }
 }

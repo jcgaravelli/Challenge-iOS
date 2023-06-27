@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		502878872A4954C5001832ED /* Rick_Morty_Font.otf in Resources */ = {isa = PBXBuildFile; fileRef = 502878862A4954C5001832ED /* Rick_Morty_Font.otf */; };
+		5028788A2A495D74001832ED /* HomeViewModel+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502878892A495D74001832ED /* HomeViewModel+UICollectionViewDataSource.swift */; };
+		5028788C2A495E19001832ED /* HomeViewModel+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028788B2A495E19001832ED /* HomeViewModel+UICollectionViewDelegate.swift */; };
+		5028788E2A4A2102001832ED /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028788D2A4A2102001832ED /* CharacterModel.swift */; };
+		507CAA562A4A4436002E5793 /* CharacterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA552A4A4436002E5793 /* CharacterViewCell.swift */; };
+		507CAA582A4A7DE8002E5793 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA572A4A7DE8002E5793 /* HomeViewModel.swift */; };
+		507CAA5A2A4A8450002E5793 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA592A4A8450002E5793 /* FilterType.swift */; };
+		507CAA5C2A4A854B002E5793 /* HomeViewModel+Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA5B2A4A854B002E5793 /* HomeViewModel+Service.swift */; };
+		507CAA5E2A4A8802002E5793 /* ResponseCharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA5D2A4A8802002E5793 /* ResponseCharacterModel.swift */; };
 		509762502A48E68400AC6066 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5097624F2A48E68400AC6066 /* HomeViewController.swift */; };
 		509762582A493C4800AC6066 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509762572A493C4800AC6066 /* UIButton.swift */; };
 		5097625A2A493CA100AC6066 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509762592A493CA100AC6066 /* UIView+Constraints.swift */; };
@@ -21,6 +29,14 @@
 
 /* Begin PBXFileReference section */
 		502878862A4954C5001832ED /* Rick_Morty_Font.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Rick_Morty_Font.otf; sourceTree = "<group>"; };
+		502878892A495D74001832ED /* HomeViewModel+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewModel+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
+		5028788B2A495E19001832ED /* HomeViewModel+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewModel+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
+		5028788D2A4A2102001832ED /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		507CAA552A4A4436002E5793 /* CharacterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewCell.swift; sourceTree = "<group>"; };
+		507CAA572A4A7DE8002E5793 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		507CAA592A4A8450002E5793 /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
+		507CAA5B2A4A854B002E5793 /* HomeViewModel+Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewModel+Service.swift"; sourceTree = "<group>"; };
+		507CAA5D2A4A8802002E5793 /* ResponseCharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCharacterModel.swift; sourceTree = "<group>"; };
 		5097624F2A48E68400AC6066 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		509762572A493C4800AC6066 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		509762592A493CA100AC6066 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
@@ -45,6 +61,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		502878882A4955D6001832ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C1D069542767DE6800883CE8 /* HomeView.swift */,
+				507CAA552A4A4436002E5793 /* CharacterViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		507CAA532A4A42E4002E5793 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				507CAA592A4A8450002E5793 /* FilterType.swift */,
+				5028788D2A4A2102001832ED /* CharacterModel.swift */,
+				507CAA5D2A4A8802002E5793 /* ResponseCharacterModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		507CAA542A4A42F6002E5793 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				507CAA572A4A7DE8002E5793 /* HomeViewModel.swift */,
+				5028788B2A495E19001832ED /* HomeViewModel+UICollectionViewDelegate.swift */,
+				502878892A495D74001832ED /* HomeViewModel+UICollectionViewDataSource.swift */,
+				507CAA5B2A4A854B002E5793 /* HomeViewModel+Service.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		509762512A490BF300AC6066 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,8 +166,10 @@
 		C1D069532767DE4E00883CE8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C1D069542767DE6800883CE8 /* HomeView.swift */,
 				5097624F2A48E68400AC6066 /* HomeViewController.swift */,
+				507CAA532A4A42E4002E5793 /* Model */,
+				502878882A4955D6001832ED /* View */,
+				507CAA542A4A42F6002E5793 /* ViewModel */,
 				509762562A493BF100AC6066 /* Extension */,
 			);
 			path = Home;
@@ -198,12 +246,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				507CAA5E2A4A8802002E5793 /* ResponseCharacterModel.swift in Sources */,
 				509762582A493C4800AC6066 /* UIButton.swift in Sources */,
 				5097625C2A493D1F00AC6066 /* StackView.swift in Sources */,
+				507CAA5A2A4A8450002E5793 /* FilterType.swift in Sources */,
 				C1D0693C2767DA8B00883CE8 /* AppDelegate.swift in Sources */,
+				5028788E2A4A2102001832ED /* CharacterModel.swift in Sources */,
+				5028788C2A495E19001832ED /* HomeViewModel+UICollectionViewDelegate.swift in Sources */,
+				5028788A2A495D74001832ED /* HomeViewModel+UICollectionViewDataSource.swift in Sources */,
 				C1D0693E2767DA8B00883CE8 /* SceneDelegate.swift in Sources */,
+				507CAA582A4A7DE8002E5793 /* HomeViewModel.swift in Sources */,
+				507CAA5C2A4A854B002E5793 /* HomeViewModel+Service.swift in Sources */,
 				5097625A2A493CA100AC6066 /* UIView+Constraints.swift in Sources */,
 				C1D069552767DE6800883CE8 /* HomeView.swift in Sources */,
+				507CAA562A4A4436002E5793 /* CharacterViewCell.swift in Sources */,
 				509762502A48E68400AC6066 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

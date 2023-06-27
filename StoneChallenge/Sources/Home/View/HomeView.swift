@@ -11,6 +11,9 @@ import UIKit
 
 class HomeView: UIView {
     
+    var viewModel: HomeViewModel?
+    var flowLayout = UICollectionViewFlowLayout()
+    
     private lazy var stackView: UIStackView = {
         return StackView.setupStackView(arrangedSubviews: [titleLabel, stackButtons, searchBar],
                                         axis: .vertical,
@@ -40,27 +43,30 @@ class HomeView: UIView {
     private lazy var statusButtonAlive: UIButton = {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.configSelectionButton(tag: 1,
-                            identifier: "homeview_StatusButtonAlive",
-                            text: "Alive")
+        configSelectionButton(button: button,
+                              tag: FilterType.alive.rawValue,
+                              identifier: "homeview_StatusButtonAlive",
+                              text: "Alive")
         return button
     }()
     
     private lazy var statusButtonDead: UIButton = {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.configSelectionButton(tag: 2,
-                            identifier: "homeview_statusButtonAlive",
-                            text: "Dead")
+        configSelectionButton(button: button,
+                              tag: FilterType.dead.rawValue,
+                              identifier: "homeview_statusButtonAlive",
+                              text: "Dead")
         return button
     }()
-    
+
     private lazy var statusButtonUnknown: UIButton = {
         let button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.configSelectionButton(tag: 3,
-                            identifier: "homeview_StatusButtonUnknown",
-                            text: "Unknown")
+        configSelectionButton(button: button,
+                              tag: FilterType.unknown.rawValue,
+                              identifier: "homeview_StatusButtonUnknown",
+                              text: "Unknown")
         return button
     }()
     
@@ -72,19 +78,25 @@ class HomeView: UIView {
         searchBar.barTintColor = UIColor.clear
         searchBar.searchBarStyle = .minimal
         searchBar.returnKeyType = .search
-        searchBar.showsCancelButton = false
-        searchBar.showsBookmarkButton = false
+        //searchBar.showsCancelButton = true
+        //searchBar.showsBookmarkButton = false
         searchBar.sizeToFit()
         return searchBar
     }()
     
-    // MARK: - View init
+    private lazy var collectionView: UICollectionView = {
+        var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+       return collectionView
+    }()
     
-    convenience init() {
+    // MARK: - View init
+
+    convenience init(viewModel: HomeViewModel) {
         self.init(frame: .null)
+        self.viewModel = viewModel
         setupUI()
     }
-    
+
     // MARK: - Private Functions
     
     private func setupUI() {
@@ -94,15 +106,79 @@ class HomeView: UIView {
     
     private func setupView() {
         //stackView component
-        addSubviewOffsideSafeArea(stackView)
+        addSubviews([stackView,collectionView])
         stackView
             .topToSuperview(16)
-            .horizontalToSuperview()
-        stackButtons
             .horizontalToSuperview(16)
         
-        searchBar
-            .topToBottom(of: stackButtons, margin: 8)
+        collectionView
+            .bottomToSuperview()
+            .leadingToSuperview()
+            .trailingToSuperview()
+            .topToBottom(of: stackView)
+            
+        setupCollectionConstraints()
+    }
+
+    func configSelectionButton(button: UIButton,
+                               tag: Int,
+                               identifier: String,
+                               text: String) {
+        button.accessibilityIdentifier = identifier
+        button.backgroundColor = .blue
+        button.clipsToBounds = true
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 16
+        button.sizeToFit()
+        button.titleLabel?.textColor = .white
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(text, for: .normal)
+        button.addTarget(self,
+                         action: #selector(didTapButton),
+                       for: .touchUpInside)
+        button.tag = tag
+    }
+    
+    // MARK: - CollectionView
+    
+    private func setupCollectionConstraints() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        setupStyle()
+    }
+
+    func setupStyle() {
+        collectionView.delegate = viewModel
+        collectionView.dataSource = viewModel
+        collectionView.backgroundColor = .clear
+        
+        setupCollectionViewLayout()
+    }
+
+    private func setupCollectionViewLayout() {
+        flowLayout = UICollectionViewFlowLayout()
+        flowLayout.estimatedItemSize = CGSize(width: 100, height: 100)
+        flowLayout.scrollDirection = .vertical
+        flowLayout.sectionInset = UIEdgeInsets(top: 16,
+                                               left: 16,
+                                               bottom: 16,
+                                               right: 16)
+        collectionView.collectionViewLayout = flowLayout
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
+
+    @objc func didTapButton(sender: UIButton) {
+        viewModel?.didTapButton(sender)
     }
 }
 
