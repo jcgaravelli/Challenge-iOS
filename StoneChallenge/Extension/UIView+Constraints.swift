@@ -86,6 +86,14 @@ public extension UIView {
     }
     
     @discardableResult
+    func bottomToBottom(of element: UIView, relation: NSLayoutConstraint.Relation = .equal, multiplier: CGFloat = 1, priority: UILayoutPriority = .required, margin: CGFloat = 0.0, isActive: Bool = true) -> Self {
+        let constraint = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: relation, toItem: element, attribute: .bottom, multiplier: multiplier, constant: -margin)
+        constraint.priority = priority
+        constraint.isActive = isActive
+        return self
+    }
+    
+    @discardableResult
     func verticalToSuperview(_ margin: CGFloat = 0.0, relation: NSLayoutConstraint.Relation = .equal, multiplier: CGFloat = 1, priority: UILayoutPriority = .required, toSafeArea: Bool = false, isActive: Bool = true) -> Self {
         topToSuperview(margin, relation: relation, multiplier: multiplier, priority: priority, toSafeArea: toSafeArea, isActive: isActive)
         bottomToSuperview(margin, relation: relation, multiplier: multiplier, priority: priority, toSafeArea: toSafeArea, isActive: isActive)

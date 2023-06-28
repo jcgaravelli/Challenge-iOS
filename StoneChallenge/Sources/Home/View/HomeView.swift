@@ -10,10 +10,9 @@ import Foundation
 import UIKit
 
 class HomeView: UIView {
-    
+
     var viewModel: HomeViewModel?
-    var flowLayout = UICollectionViewFlowLayout()
-    
+
     private lazy var stackView: UIStackView = {
         return StackView.setupStackView(arrangedSubviews: [titleLabel, stackButtons, searchBar],
                                         axis: .vertical,
@@ -85,15 +84,27 @@ class HomeView: UIView {
     }()
     
     private lazy var collectionView: UICollectionView = {
+        var flowLayout = UICollectionViewFlowLayout()
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        
+        // make sure that there is a slightly larger gap at the top of each row
+        flowLayout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 10)
+        flowLayout.itemSize = CGSize(width: 110, height: 110)
+        flowLayout.scrollDirection = .vertical //this is for direction
+        flowLayout.minimumInteritemSpacing = 16 // this is for spacing between cells
+        flowLayout.minimumLineSpacing = 32
+    
+        collectionView.register(CharacterViewCell.self,
+                                forCellWithReuseIdentifier: CharacterViewCell.identifier)
        return collectionView
     }()
     
     // MARK: - View init
 
-    convenience init(viewModel: HomeViewModel) {
+    convenience init(viewModel: HomeViewModel?) {
         self.init(frame: .null)
         self.viewModel = viewModel
+        self.viewModel?.reloadCollectionView = reloadCollectionView
         setupUI()
     }
 
@@ -125,13 +136,13 @@ class HomeView: UIView {
                                identifier: String,
                                text: String) {
         button.accessibilityIdentifier = identifier
-        button.backgroundColor = .blue
+        button.backgroundColor = .systemGreen
         button.clipsToBounds = true
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 16
         button.sizeToFit()
-        button.titleLabel?.textColor = .white
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.titleLabel?.textColor = .black
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(text, for: .normal)
         button.addTarget(self,
@@ -142,29 +153,19 @@ class HomeView: UIView {
     
     // MARK: - CollectionView
     
+    private func reloadCollectionView() {
+        collectionView.reloadData()
+    }
+    
     private func setupCollectionConstraints() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         setupStyle()
     }
 
-    func setupStyle() {
+    private func setupStyle() {
         collectionView.delegate = viewModel
         collectionView.dataSource = viewModel
         collectionView.backgroundColor = .clear
-        
-        setupCollectionViewLayout()
-    }
-
-    private func setupCollectionViewLayout() {
-        flowLayout = UICollectionViewFlowLayout()
-        flowLayout.estimatedItemSize = CGSize(width: 100, height: 100)
-        flowLayout.scrollDirection = .vertical
-        flowLayout.sectionInset = UIEdgeInsets(top: 16,
-                                               left: 16,
-                                               bottom: 16,
-                                               right: 16)
-        collectionView.collectionViewLayout = flowLayout
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

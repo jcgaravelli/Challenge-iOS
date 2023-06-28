@@ -9,22 +9,32 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    var contentView: HomeView
     var viewModel: HomeViewModel?
 
+    init(viewModel: HomeViewModel? = nil) {
+        let contentView = HomeView(viewModel: viewModel)
+        self.viewModel = viewModel
+        self.contentView = contentView
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemGreen
         setupView()
+    }
+    
+    func setupView() {
+        self.view.addSubviewInsideSafeArea(contentView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel?.viewWillAppear()
-    }
-
-    func setupView() {
-        let viewModel = HomeViewModel()
-        let view = HomeView(viewModel: viewModel)
-        self.viewModel = viewModel
-        self.view.addSubviewInsideSafeArea(view)
     }
 }

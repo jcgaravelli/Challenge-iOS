@@ -6,25 +6,30 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CharacterViewCell: UICollectionViewCell {
+    
+    static let identifier = "CharacterViewCell"
+    
+    private var name: String = ""
+    private var image: String = ""
     
     private lazy var characterNameLabel: UILabel = {
         let label = UILabel()
         label.accessibilityIdentifier = "homeview_TitleLabel"
-        label.backgroundColor = .white
+        label.backgroundColor = .clear
         label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.text = "Rick"
         label.textAlignment = .center
         return label
     }()
     
-    private lazy var characterImage: UIImageView = {
+    lazy var characterImage: UIImageView = {
        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.cornerRadius = 5
+        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
@@ -37,11 +42,23 @@ class CharacterViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        characterImage.frame = contentView.bounds
+    }
+    
     private func setupUI() {
-        contentView.addSubviews([characterImage, characterNameLabel])
+        contentView.addSubviews([characterNameLabel, characterImage])
         
         characterImage
             .verticalToSuperview()
             .horizontalToSuperview()
+        characterNameLabel
+            .topToBottom(of: characterImage)
+            .horizontalToSuperview()
+    }
+
+    func setup(name: String) {
+        self.characterNameLabel.text = name
     }
 }

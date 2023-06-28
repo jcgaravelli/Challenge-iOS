@@ -6,17 +6,28 @@
 //
 
 import UIKit
+import Kingfisher
 
 extension HomeViewModel: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 21
+        return filteredCharacter.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath)
-        myCell.layer.cornerRadius = 5
-        myCell.backgroundColor = UIColor.blue
+        guard let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterViewCell", for: indexPath) as? CharacterViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        myCell.setup(name: filteredCharacter[indexPath.row].name ?? "")
+        
+        let galleryImages = filteredCharacter[indexPath.row]
+        //let fullURLImages = "https://rickandmortyapi.com/api/character/image"
+                
+        if let imageUrl = galleryImages.image {
+            let url = URL(string: imageUrl)
+            myCell.characterImage.kf.setImage(with: url)
+        }
         
         return myCell
     }

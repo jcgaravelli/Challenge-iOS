@@ -9,10 +9,18 @@ import UIKit
 
 class HomeViewModel: NSObject {
 
+    var coordinatorDelegate: HomeCoordinatorDelegate?
+
     var character: [CharacterModel] = []
+    var filteredCharacter: [CharacterModel] = [] {
+        didSet {
+            self.reloadCollectionView?()
+        }
+    }
+    var reloadCollectionView: (() -> Void)?
 
     func viewWillAppear() {
-        callService()
+        parseGetCharacters()
     }
 
     func didTapButton(_ sender: UIButton) {
@@ -24,6 +32,6 @@ class HomeViewModel: NSObject {
         guard let type else { return }
 
         print("filter \(type)")
-        // filter model
+        filteredCharacter = character.filter { $0.status?.lowercased() == type.stringValue }
     }
 }

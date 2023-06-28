@@ -8,13 +8,19 @@
 import Foundation
 
 extension HomeViewModel {
-
-    func callService() {
-        // get character
     
-        // ResponseCharacterModel
+    func parseGetCharacters() {
+        // get character
+        guard character.isEmpty else {
+            return
+        }
         
-        
-        // self.character = response
+        ServiceManager().getCharacters() { (character, error) in
+            guard let character: [CharacterModel] = character else {
+                return
+            }
+            self.character = character
+            self.filteredCharacter = character
+        }
     }
 }
