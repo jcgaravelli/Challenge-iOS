@@ -9,19 +9,28 @@ import UIKit
 
 class CharacterDetailViewController: UIViewController {
     
-//    required init?(coder aDecoder: NSCoder) {
-//        self.contentView = contentView
-//        super.init(coder: aDecoder)
-//    }
+    var contentView: CharacterDetailView
+    var viewModel: CharacterDetailViewModel?
+
+    init(viewModel: CharacterDetailViewModel) {
+        let contentView = CharacterDetailView(viewModel: viewModel)
+        self.viewModel = viewModel
+        self.contentView = contentView
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
-        
         setupView()
     }
     
     func setupView() {
-        view.addSubview(CharacterDetailView())
+        self.view.addSubviewInsideSafeArea(contentView)
     }
+
 }

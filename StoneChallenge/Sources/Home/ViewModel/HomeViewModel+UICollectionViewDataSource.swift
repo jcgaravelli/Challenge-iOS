@@ -22,7 +22,6 @@ extension HomeViewModel: UICollectionViewDataSource {
         myCell.setup(name: filteredCharacter[indexPath.row].name ?? "")
         
         let galleryImages = filteredCharacter[indexPath.row]
-        //let fullURLImages = "https://rickandmortyapi.com/api/character/image"
                 
         if let imageUrl = galleryImages.image {
             let url = URL(string: imageUrl)

@@ -15,7 +15,7 @@ protocol Coordinator {
 }
 
 protocol HomeCoordinatorDelegate: AnyObject {
-    func goToDetail()
+    func goToDetail(with characterDetail: CharacterModel)
 }
 
 class HomeCoordinator: Coordinator {
@@ -30,14 +30,15 @@ class HomeCoordinator: Coordinator {
         let viewModel = HomeViewModel()
         viewModel.coordinatorDelegate = self
         let viewController = HomeViewController(viewModel: viewModel)
+        
         navigationController.pushViewController(viewController, animated: true)
     }
 }
 
 extension HomeCoordinator: HomeCoordinatorDelegate {
 
-    func goToDetail() {
-        let coordinator = CharacterDetailCoordinator(navigationController: navigationController)
+    func goToDetail(with characterDetail: CharacterModel) {
+        let coordinator = CharacterDetailCoordinator(navigationController: navigationController, characterDetail: characterDetail)
         coordinator.start()
         childCoordinators.append(coordinator)
     }

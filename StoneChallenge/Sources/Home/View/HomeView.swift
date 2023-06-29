@@ -34,7 +34,6 @@ class HomeView: UIView {
         label.accessibilityIdentifier = "homeview_TitleLabel"
         label.backgroundColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 30)
-        label.text = "Rick and Morty"
         label.textAlignment = .center
         return label
     }()

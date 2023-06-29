@@ -21,6 +21,7 @@
 		507CAA6A2A4B8B7A002E5793 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA692A4B8B7A002E5793 /* HomeCoordinator.swift */; };
 		507CAA6C2A4B8CB7002E5793 /* CharacterDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA6B2A4B8CB7002E5793 /* CharacterDetailCoordinator.swift */; };
 		507CAA722A4BBBB5002E5793 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA712A4BBBB5002E5793 /* CharacterDetailView.swift */; };
+		507CAA742A4D443E002E5793 /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA732A4D443E002E5793 /* CharacterDetailViewModel.swift */; };
 		509762502A48E68400AC6066 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5097624F2A48E68400AC6066 /* HomeViewController.swift */; };
 		509762582A493C4800AC6066 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509762572A493C4800AC6066 /* UIButton.swift */; };
 		5097625A2A493CA100AC6066 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509762592A493CA100AC6066 /* UIView+Constraints.swift */; };
@@ -49,6 +50,7 @@
 		507CAA692A4B8B7A002E5793 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		507CAA6B2A4B8CB7002E5793 /* CharacterDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailCoordinator.swift; sourceTree = "<group>"; };
 		507CAA712A4BBBB5002E5793 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
+		507CAA732A4D443E002E5793 /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		5097624F2A48E68400AC6066 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		509762572A493C4800AC6066 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		509762592A493CA100AC6066 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
@@ -97,7 +99,6 @@
 		507CAA532A4A42E4002E5793 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				507CAA592A4A8450002E5793 /* FilterType.swift */,
 				5028788D2A4A2102001832ED /* CharacterModel.swift */,
 				507CAA5D2A4A8802002E5793 /* ResponseCharacterModel.swift */,
 			);
@@ -161,6 +162,7 @@
 		507CAA702A4B99EF002E5793 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				507CAA732A4D443E002E5793 /* CharacterDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				5097624F2A48E68400AC6066 /* HomeViewController.swift */,
+				507CAA592A4A8450002E5793 /* FilterType.swift */,
 				507CAA682A4B8B53002E5793 /* Coordinator */,
 				507CAA532A4A42E4002E5793 /* Model */,
 				502878882A4955D6001832ED /* View */,
@@ -377,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				507CAA742A4D443E002E5793 /* CharacterDetailViewModel.swift in Sources */,
 				507CAA5E2A4A8802002E5793 /* ResponseCharacterModel.swift in Sources */,
 				509762582A493C4800AC6066 /* UIButton.swift in Sources */,
 				5097625C2A493D1F00AC6066 /* StackView.swift in Sources */,

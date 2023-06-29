@@ -11,7 +11,6 @@ extension HomeViewModel: UICollectionViewDelegate {
  
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        print(character[indexPath.row].name)
-        coordinatorDelegate?.goToDetail()
+        coordinatorDelegate?.goToDetail(with: character[indexPath.row])
     }
 }
