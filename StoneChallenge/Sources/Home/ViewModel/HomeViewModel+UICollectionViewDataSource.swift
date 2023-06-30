@@ -30,4 +30,20 @@ extension HomeViewModel: UICollectionViewDataSource {
         
         return myCell
     }
+    
+//    func startAnimating() {
+//        activityIndicatorView.startAnimating()
+//    }
+//    
+//    func stopAnimating() {
+//        activityIndicatorView.stopAnimating()
+//        activityIndicatorView.removeFromSuperview()
+//    }
+}
+
+extension HomeViewModel: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollViewDidScroll?()
+    }
 }

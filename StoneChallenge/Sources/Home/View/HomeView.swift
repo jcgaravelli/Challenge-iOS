@@ -12,6 +12,7 @@ import UIKit
 class HomeView: UIView {
 
     var viewModel: HomeViewModel?
+    var isPageRefreshing: Bool = false
 
     private lazy var stackView: UIStackView = {
         return StackView.setupStackView(arrangedSubviews: [titleLabel, stackButtons, searchBar],
@@ -87,11 +88,12 @@ class HomeView: UIView {
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         
         // make sure that there is a slightly larger gap at the top of each row
-        flowLayout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 10)
-        flowLayout.itemSize = CGSize(width: 110, height: 110)
+        flowLayout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 24, right: 16)
+        flowLayout.itemSize = CGSize(width: 100, height: 100)
         flowLayout.scrollDirection = .vertical //this is for direction
         flowLayout.minimumInteritemSpacing = 16 // this is for spacing between cells
         flowLayout.minimumLineSpacing = 32
+        flowLayout.collectionView?.isPagingEnabled = true
     
         collectionView.register(CharacterViewCell.self,
                                 forCellWithReuseIdentifier: CharacterViewCell.identifier)
@@ -104,6 +106,7 @@ class HomeView: UIView {
         self.init(frame: .null)
         self.viewModel = viewModel
         self.viewModel?.reloadCollectionView = reloadCollectionView
+        self.viewModel?.scrollViewDidScroll = scrollViewDidScroll
         setupUI()
     }
 
@@ -143,6 +146,8 @@ class HomeView: UIView {
         button.titleLabel?.textColor = .black
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.systemPink, for: .selected)
+        button.isSelected = false
         button.setTitle(text, for: .normal)
         button.addTarget(self,
                          action: #selector(didTapButton),
@@ -151,9 +156,10 @@ class HomeView: UIView {
     }
     
     // MARK: - CollectionView
-    
+
     private func reloadCollectionView() {
         collectionView.reloadData()
+        isPageRefreshing = false
     }
     
     private func setupCollectionConstraints() {
@@ -178,7 +184,31 @@ class HomeView: UIView {
     }
 
     @objc func didTapButton(sender: UIButton) {
-        viewModel?.didTapButton(sender)
+        diselectButtons()
+        var tag = 0
+        if sender.tag != viewModel?.filter?.rawValue {
+            sender.isSelected = true
+            tag = sender.tag
+        }
+        viewModel?.didTapButton(tag)
+    }
+
+    func diselectButtons() {
+        statusButtonAlive.isSelected = false
+        statusButtonDead.isSelected = false
+        statusButtonUnknown.isSelected = false
+    }
+}
+
+extension HomeView {
+
+    func scrollViewDidScroll() {
+        if (self.collectionView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height)) {
+                if !isPageRefreshing {
+                    isPageRefreshing = true
+                    viewModel?.parseGetCharacters(nextPage: true)
+                }
+            }
     }
 }
 

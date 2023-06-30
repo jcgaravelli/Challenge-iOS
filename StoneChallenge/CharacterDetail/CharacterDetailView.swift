@@ -17,7 +17,7 @@ class CharacterDetailView: UIView {
                                         axis: .vertical,
                                         alignment: .fill,
                                         distribution: .fill,
-                                        spacing: 16)
+                                        spacing: 0)
     }()
     
     lazy var characterImage: UIImageView = {
@@ -90,7 +90,7 @@ class CharacterDetailView: UIView {
         addSubviews([stackView])
         stackView
             .topToSuperview(16)
-            .horizontalToSuperview(16)
+            .horizontalToSuperview()
     }
     
     private func setupCharacterDetail() {

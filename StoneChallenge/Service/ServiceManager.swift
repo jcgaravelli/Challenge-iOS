@@ -8,23 +8,14 @@
 import Alamofire
 
 class ServiceManager {
-    
+
     private let baseURL = "https://rickandmortyapi.com/api/"
-    
-    func getCharacters(completion: @escaping ([CharacterModel]?, Error? ) -> Void) {
-        let fullUrl = "\(baseURL)character"
-        
+
+    func getRequest(path: String, completion: @escaping ((Data?, Error?) -> Void)) {
+        let fullUrl = baseURL + path
+        print(fullUrl)
         AF.request(fullUrl, method: .get).responseData { (response) in
-            guard let data = response.data else { return }
-            
-            do {
-                let decoder = JSONDecoder()
-                let dataCharacter = try decoder.decode(ResponseCharacterModel.self, from: data)
-                completion(dataCharacter.results, nil)
-            } catch let error {
-                completion(nil, error)
-                print("Error", error)
-            }
+            completion(response.data, response.error)
         }
     }
 }

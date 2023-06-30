@@ -22,6 +22,7 @@
 		507CAA6C2A4B8CB7002E5793 /* CharacterDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA6B2A4B8CB7002E5793 /* CharacterDetailCoordinator.swift */; };
 		507CAA722A4BBBB5002E5793 /* CharacterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA712A4BBBB5002E5793 /* CharacterDetailView.swift */; };
 		507CAA742A4D443E002E5793 /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA732A4D443E002E5793 /* CharacterDetailViewModel.swift */; };
+		507CAA762A4E7950002E5793 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA752A4E7950002E5793 /* CharacterService.swift */; };
 		509762502A48E68400AC6066 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5097624F2A48E68400AC6066 /* HomeViewController.swift */; };
 		509762582A493C4800AC6066 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509762572A493C4800AC6066 /* UIButton.swift */; };
 		5097625A2A493CA100AC6066 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 509762592A493CA100AC6066 /* UIView+Constraints.swift */; };
@@ -51,6 +52,7 @@
 		507CAA6B2A4B8CB7002E5793 /* CharacterDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailCoordinator.swift; sourceTree = "<group>"; };
 		507CAA712A4BBBB5002E5793 /* CharacterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailView.swift; sourceTree = "<group>"; };
 		507CAA732A4D443E002E5793 /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
+		507CAA752A4E7950002E5793 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
 		5097624F2A48E68400AC6066 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		509762572A493C4800AC6066 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		509762592A493CA100AC6066 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				507CAA602A4AA74C002E5793 /* ServiceManager.swift */,
+				507CAA752A4E7950002E5793 /* CharacterService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				507CAA6A2A4B8B7A002E5793 /* HomeCoordinator.swift in Sources */,
 				5097625A2A493CA100AC6066 /* UIView+Constraints.swift in Sources */,
 				507CAA722A4BBBB5002E5793 /* CharacterDetailView.swift in Sources */,
+				507CAA762A4E7950002E5793 /* CharacterService.swift in Sources */,
 				C1D069552767DE6800883CE8 /* HomeView.swift in Sources */,
 				507CAA672A4B8A18002E5793 /* CharacterDetailViewController.swift in Sources */,
 				507CAA562A4A4436002E5793 /* CharacterViewCell.swift in Sources */,

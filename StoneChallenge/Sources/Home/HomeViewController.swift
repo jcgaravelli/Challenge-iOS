@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
         setupView()
+        viewModel?.viewDidLoad()
     }
     
     func setupView() {
