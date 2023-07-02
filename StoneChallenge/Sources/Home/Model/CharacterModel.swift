@@ -8,16 +8,16 @@
 import UIKit
 
 struct CharacterModel: Codable {
-    var id: Int?
-    var name: String?
-    var image: String?
-    var status: String?
+    var id: Int
+    var name: String
+    var image: String
+    var status: String
     
-    var species: String?
-    var type: String?
-    var gender: String?
+    var species: String
+    var type: String
+    var gender: String
 
-    init(id: Int?, name: String?, image: String?, status: String?, species: String?, type: String?, gender: String?){
+    init(id: Int, name: String, image: String, status: String, species: String, type: String, gender: String){
         self.id = id
         self.name = name
         self.image = image

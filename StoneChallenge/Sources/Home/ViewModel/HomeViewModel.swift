@@ -24,14 +24,29 @@ class HomeViewModel: NSObject {
             self.reloadCollectionView?()
         }
     }
+    var filterName: String? {
+        didSet {
+            self.reloadCollectionView?()
+        }
+    }
+
     var filteredCharacter: [CharacterModel] {
-        guard let filter else { return character }
-        return character.filter { $0.status?.lowercased() == filter.stringValue }
+        if let filter {
+            return character.filter { $0.status.lowercased() == filter.stringValue }
+        }
+
+        if let filterName, !filterName.isEmpty {
+            return character.filter { $0.name.lowercased()
+                .contains(filterName.lowercased()) }
+        }
+        return character
     }
 
     // MARK: Update View
     var reloadCollectionView: (() -> Void)?
     var scrollViewDidScroll: (() -> Void)?
+    var searchBarTextDidBeginEditing: (() -> Void)?
+    var searchBarCancelButtonClicked: (() -> Void)?
 
     func viewDidLoad() {
         characterService = CharacterService()

@@ -26,7 +26,7 @@ class CharacterViewCell: UICollectionViewCell {
     
     lazy var characterImage: UIImageView = {
        let image = UIImageView()
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.cornerRadius = 5
         image.translatesAutoresizingMaskIntoConstraints = false

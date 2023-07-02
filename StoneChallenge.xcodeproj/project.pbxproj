@@ -11,6 +11,8 @@
 		5028788A2A495D74001832ED /* HomeViewModel+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502878892A495D74001832ED /* HomeViewModel+UICollectionViewDataSource.swift */; };
 		5028788C2A495E19001832ED /* HomeViewModel+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028788B2A495E19001832ED /* HomeViewModel+UICollectionViewDelegate.swift */; };
 		5028788E2A4A2102001832ED /* CharacterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5028788D2A4A2102001832ED /* CharacterModel.swift */; };
+		5070CCE42A50CEB500E7491A /* StorageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070CCE32A50CEB500E7491A /* StorageCache.swift */; };
+		5070CCE62A50D90200E7491A /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5070CCE52A50D90200E7491A /* Connectivity.swift */; };
 		507CAA562A4A4436002E5793 /* CharacterViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA552A4A4436002E5793 /* CharacterViewCell.swift */; };
 		507CAA582A4A7DE8002E5793 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA572A4A7DE8002E5793 /* HomeViewModel.swift */; };
 		507CAA5A2A4A8450002E5793 /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CAA592A4A8450002E5793 /* FilterType.swift */; };
@@ -41,6 +43,8 @@
 		502878892A495D74001832ED /* HomeViewModel+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewModel+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		5028788B2A495E19001832ED /* HomeViewModel+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewModel+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
 		5028788D2A4A2102001832ED /* CharacterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterModel.swift; sourceTree = "<group>"; };
+		5070CCE32A50CEB500E7491A /* StorageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCache.swift; sourceTree = "<group>"; };
+		5070CCE52A50D90200E7491A /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		507CAA552A4A4436002E5793 /* CharacterViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewCell.swift; sourceTree = "<group>"; };
 		507CAA572A4A7DE8002E5793 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		507CAA592A4A8450002E5793 /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
@@ -139,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				507CAA662A4B8A18002E5793 /* CharacterDetailViewController.swift */,
-				507CAA712A4BBBB5002E5793 /* CharacterDetailView.swift */,
 				507CAA6E2A4B99E5002E5793 /* Coordinator */,
 				507CAA6F2A4B99EB002E5793 /* View */,
 				507CAA702A4B99EF002E5793 /* ViewModel */,
@@ -158,6 +161,7 @@
 		507CAA6F2A4B99EB002E5793 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				507CAA712A4BBBB5002E5793 /* CharacterDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -232,6 +236,8 @@
 				C1D069492767DA8C00883CE8 /* Info.plist */,
 				C1D0693B2767DA8B00883CE8 /* AppDelegate.swift */,
 				C1D0693D2767DA8B00883CE8 /* SceneDelegate.swift */,
+				5070CCE32A50CEB500E7491A /* StorageCache.swift */,
+				5070CCE52A50D90200E7491A /* Connectivity.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -402,6 +408,8 @@
 				507CAA722A4BBBB5002E5793 /* CharacterDetailView.swift in Sources */,
 				507CAA762A4E7950002E5793 /* CharacterService.swift in Sources */,
 				C1D069552767DE6800883CE8 /* HomeView.swift in Sources */,
+				5070CCE42A50CEB500E7491A /* StorageCache.swift in Sources */,
+				5070CCE62A50D90200E7491A /* Connectivity.swift in Sources */,
 				507CAA672A4B8A18002E5793 /* CharacterDetailViewController.swift in Sources */,
 				507CAA562A4A4436002E5793 /* CharacterViewCell.swift in Sources */,
 				509762502A48E68400AC6066 /* HomeViewController.swift in Sources */,

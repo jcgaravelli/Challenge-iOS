@@ -107,6 +107,8 @@ class HomeView: UIView {
         self.viewModel = viewModel
         self.viewModel?.reloadCollectionView = reloadCollectionView
         self.viewModel?.scrollViewDidScroll = scrollViewDidScroll
+        self.viewModel?.searchBarTextDidBeginEditing = searchBarTextDidBeginEditing
+        //self.viewModel?.searchBarCancelButtonClicked = searchBarCancelButtonClicked
         setupUI()
     }
 
@@ -164,23 +166,15 @@ class HomeView: UIView {
     
     private func setupCollectionConstraints() {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        setupStyle()
+        setupDelegate()
     }
 
-    private func setupStyle() {
+    private func setupDelegate() {
         collectionView.delegate = viewModel
         collectionView.dataSource = viewModel
         collectionView.backgroundColor = .clear
-    }
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.searchBar.showsCancelButton = true
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.text = ""
-        searchBar.resignFirstResponder()
+        
+        searchBar.delegate = viewModel
     }
 
     @objc func didTapButton(sender: UIButton) {
@@ -213,44 +207,14 @@ extension HomeView {
 }
 
 // MARK: - Search Delegate
-//extension HomeViewController: UISearchBarDelegate {
-//
-//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-//        searchActive = true
-//        self.searchBar.showsCancelButton = true
-//        self.collectionView.reloadData()
-//    }
-//
-//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        self.searchBar.text = ""
-//        self.filtered = []
-//        searchActive = false
-//        self.searchBar.showsCancelButton = false
+extension HomeView {
+
+    func searchBarTextDidBeginEditing() {
+        self.searchBar.endEditing(true)
+    }
+    
+//    func searchBarCancelButtonClicked() {
+//        //self.searchBar.showsCancelButton = true
 //        self.searchBar.endEditing(true)
-//        self.dismiss(animated: true, completion: nil)
-//        self.collectionView.reloadData()
 //    }
-//
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//
-//        if searchBar.text! == " "  {
-//            filtered = exercises
-//            collectionView.reloadData()
-//        } else {
-//
-//        filtered = exercises.filter({ (item) -> Bool in
-//
-//            return (item.exerciseNameLabel?.localizedCaseInsensitiveContains(String(searchBar.text!)))!
-//
-//            })
-//
-//        collectionView.reloadData()
-//        }
-//
-//    }
-//
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        collectionView.reloadData()
-//    }
-//
-//}
+}

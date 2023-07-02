@@ -19,14 +19,13 @@ extension HomeViewModel: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        myCell.setup(name: filteredCharacter[indexPath.row].name ?? "")
+        myCell.setup(name: filteredCharacter[indexPath.row].name)
         
         let galleryImages = filteredCharacter[indexPath.row]
-                
-        if let imageUrl = galleryImages.image {
-            let url = URL(string: imageUrl)
-            myCell.characterImage.kf.setImage(with: url)
-        }
+        
+        let imageUrl = galleryImages.image
+        let url = URL(string: imageUrl)
+        myCell.characterImage.kf.setImage(with: url)
         
         return myCell
     }
@@ -45,5 +44,27 @@ extension HomeViewModel: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewDidScroll?()
+    }
+}
+
+extension HomeViewModel: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBarTextDidBeginEditing?()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filterName = searchText
+        
+        if searchText.isEmpty {
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_searchBar: UISearchBar) {
+        searchBarCancelButtonClicked?()
     }
 }

@@ -106,5 +106,3 @@ class CharacterDetailView: UIView {
         characterGender.text = viewModel?.characterDetailModel.gender
     }
 }
-
-

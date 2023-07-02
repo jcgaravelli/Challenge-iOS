@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CharacterDetailViewModel: NSObject {
+class CharacterDetailViewModel {
     
     var characterDetailModel: CharacterModel
     
@@ -15,3 +15,4 @@ class CharacterDetailViewModel: NSObject {
         self.characterDetailModel = characterDetailModel
     }
 }
+ 
