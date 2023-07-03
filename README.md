@@ -2,7 +2,7 @@
 O desafio consiste em desenvolver um aplicativo iOS em Swift e consumir uma API pública do Rick and Morty.
 
 ## Telas
-<img src="StoneChallenge/Resources/Screenshots/img1.png?raw=true" width="250"> <img src="StoneChallenge/Resources/Screenshots/img2.png?raw=true" width="250"> 
+<img src="StoneChallenge/Resources/Screenshots/img1.png?raw=true" width="250">  <img src="StoneChallenge/Resources/Screenshots/img2.png?raw=true" width="250"> 
 <img src="StoneChallenge/Resources/Screenshots/img3.png?raw=true" width="500"> 
 
 # Requisitos
