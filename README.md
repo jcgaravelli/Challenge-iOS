@@ -2,8 +2,8 @@
 O desafio consiste em desenvolver um aplicativo iOS em Swift e consumir uma API pública do Rick and Morty.
 
 ## Telas
-<img src="Screenshots/img1.PNG?raw=true" width="250"> <img src="Screenshots/img2.PNG?raw=true" width="250"> 
-<img src="Screenshots/img3.PNG?raw=true" width="500"> 
+<img src="Screenshots/img1.png?raw=true" width="250"> <img src="Screenshots/img2.png?raw=true" width="250"> 
+<img src="Screenshots/img3.png?raw=true" width="500"> 
 
 # Requisitos
 - Arquitetura MVVM-C(Coordinator)
