@@ -35,5 +35,5 @@ O desafio consiste em desenvolver um aplicativo iOS em Swift e consumir uma API 
   - Genero
 
 # Não aplicável
-- Deploy, uso de lint, CI, DI etc.
+- Deploy, uso de lint, CI.
 
