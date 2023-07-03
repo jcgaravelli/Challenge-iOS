@@ -183,6 +183,8 @@
 		507CAA5F2A4AA71C002E5793 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5070CCE52A50D90200E7491A /* Connectivity.swift */,
+				5070CCE32A50CEB500E7491A /* StorageCache.swift */,
 				507CAA602A4AA74C002E5793 /* ServiceManager.swift */,
 				507CAA752A4E7950002E5793 /* CharacterService.swift */,
 			);
@@ -286,8 +288,6 @@
 				C1D069492767DA8C00883CE8 /* Info.plist */,
 				C1D0693B2767DA8B00883CE8 /* AppDelegate.swift */,
 				C1D0693D2767DA8B00883CE8 /* SceneDelegate.swift */,
-				5070CCE32A50CEB500E7491A /* StorageCache.swift */,
-				5070CCE52A50D90200E7491A /* Connectivity.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
