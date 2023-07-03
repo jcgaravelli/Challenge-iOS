@@ -16,27 +16,6 @@ class StorageCache {
 
     init() {}
 
-//    static func save<T: Encodable>(_ value: T, as path: String) throws -> URL {
-//        do {
-//            let encoder = JSONEncoder()
-//            let encodedData = try encoder.encode(value) as Data
-//            return try StorageCache.save(encodedData, as: path)
-//        } catch {
-//            throw error
-//        }
-//    }
-//
-//    static func retrieve<T: Decodable>(_ path: String, as type: T.Type) throws -> T {
-//        do {
-//            let data = try retrieve(path)
-//            let decoder = JSONDecoder()
-//            let value = try decoder.decode(type, from: data)
-//            return value
-//        } catch {
-//            throw error
-//        }
-//    }
-
     static func save(_ value: Data, as path: String) throws -> URL {
         do {
             let url = try createURL(for: path)

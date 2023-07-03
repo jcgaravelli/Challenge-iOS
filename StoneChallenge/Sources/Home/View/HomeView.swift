@@ -15,7 +15,7 @@ class HomeView: UIView {
     var isPageRefreshing: Bool = false
 
     private lazy var stackView: UIStackView = {
-        return StackView.setupStackView(arrangedSubviews: [titleLabel, stackButtons, searchBar],
+        return UIStackView.setupStackView(arrangedSubviews: [ stackButtons, searchBar],
                                         axis: .vertical,
                                         alignment: .fill,
                                         distribution: .fill,
@@ -23,49 +23,37 @@ class HomeView: UIView {
     }()
     
     private lazy var stackButtons: UIStackView = {
-       return StackView.setupStackView(arrangedSubviews: [statusButtonAlive, statusButtonDead, statusButtonUnknown],
+       return UIStackView.setupStackView(arrangedSubviews: [statusButtonAlive, statusButtonDead, statusButtonUnknown],
                                             axis: .horizontal,
                                             alignment: .fill,
                                             distribution: .fillEqually,
                                             spacing: 8)
     }()
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.accessibilityIdentifier = "homeview_TitleLabel"
-        label.backgroundColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 30)
-        label.textAlignment = .center
-        return label
-    }()
-    
-    private lazy var statusButtonAlive: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        configSelectionButton(button: button,
-                              tag: FilterType.alive.rawValue,
-                              identifier: "homeview_StatusButtonAlive",
-                              text: "Alive")
+    private lazy var statusButtonAlive: SelectionButton = {
+        let button = SelectionButton(frame: .zero)
+        button.setupConfig(tag: FilterType.alive.rawValue,
+                           identifier: "homeview_StatusButtonAlive",
+                           text: "Alive",
+                           actionButton: didTapButton)
         return button
     }()
     
-    private lazy var statusButtonDead: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        configSelectionButton(button: button,
-                              tag: FilterType.dead.rawValue,
-                              identifier: "homeview_statusButtonAlive",
-                              text: "Dead")
+    private lazy var statusButtonDead: SelectionButton = {
+        let button = SelectionButton(frame: .zero)
+        button.setupConfig(tag: FilterType.dead.rawValue,
+                           identifier: "homeview_statusButtonAlive",
+                           text: "Dead",
+                           actionButton: didTapButton)
         return button
     }()
 
-    private lazy var statusButtonUnknown: UIButton = {
-        let button = UIButton(frame: .zero)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        configSelectionButton(button: button,
-                              tag: FilterType.unknown.rawValue,
-                              identifier: "homeview_StatusButtonUnknown",
-                              text: "Unknown")
+    private lazy var statusButtonUnknown: SelectionButton = {
+        let button = SelectionButton(frame: .zero)
+        button.setupConfig(tag: FilterType.unknown.rawValue,
+                           identifier: "homeview_StatusButtonUnknown",
+                           text: "Unknown",
+                           actionButton: didTapButton)
         return button
     }()
     
@@ -77,8 +65,6 @@ class HomeView: UIView {
         searchBar.barTintColor = UIColor.clear
         searchBar.searchBarStyle = .minimal
         searchBar.returnKeyType = .search
-        //searchBar.showsCancelButton = true
-        //searchBar.showsBookmarkButton = false
         searchBar.sizeToFit()
         return searchBar
     }()
@@ -87,11 +73,10 @@ class HomeView: UIView {
         var flowLayout = UICollectionViewFlowLayout()
         var collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         
-        // make sure that there is a slightly larger gap at the top of each row
         flowLayout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 24, right: 16)
-        flowLayout.itemSize = CGSize(width: 100, height: 100)
-        flowLayout.scrollDirection = .vertical //this is for direction
-        flowLayout.minimumInteritemSpacing = 16 // this is for spacing between cells
+        flowLayout.itemSize = CGSize(width: 100, height: 150)
+        flowLayout.scrollDirection = .vertical
+        flowLayout.minimumInteritemSpacing = 16
         flowLayout.minimumLineSpacing = 32
         flowLayout.collectionView?.isPagingEnabled = true
     
@@ -106,9 +91,8 @@ class HomeView: UIView {
         self.init(frame: .null)
         self.viewModel = viewModel
         self.viewModel?.reloadCollectionView = reloadCollectionView
-        self.viewModel?.scrollViewDidScroll = scrollViewDidScroll
-        self.viewModel?.searchBarTextDidBeginEditing = searchBarTextDidBeginEditing
-        //self.viewModel?.searchBarCancelButtonClicked = searchBarCancelButtonClicked
+        self.viewModel?.pageRefreshing = pageRefreshing
+        self.viewModel?.hideKeyboard = hideKeyboard
         setupUI()
     }
 
@@ -134,28 +118,6 @@ class HomeView: UIView {
             
         setupCollectionConstraints()
     }
-
-    func configSelectionButton(button: UIButton,
-                               tag: Int,
-                               identifier: String,
-                               text: String) {
-        button.accessibilityIdentifier = identifier
-        button.backgroundColor = .systemGreen
-        button.clipsToBounds = true
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = 16
-        button.sizeToFit()
-        button.titleLabel?.textColor = .black
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitleColor(.systemPink, for: .selected)
-        button.isSelected = false
-        button.setTitle(text, for: .normal)
-        button.addTarget(self,
-                         action: #selector(didTapButton),
-                       for: .touchUpInside)
-        button.tag = tag
-    }
     
     // MARK: - CollectionView
 
@@ -172,7 +134,6 @@ class HomeView: UIView {
     private func setupDelegate() {
         collectionView.delegate = viewModel
         collectionView.dataSource = viewModel
-        collectionView.backgroundColor = .clear
         
         searchBar.delegate = viewModel
     }
@@ -196,7 +157,7 @@ class HomeView: UIView {
 
 extension HomeView {
 
-    func scrollViewDidScroll() {
+    func pageRefreshing() {
         if (self.collectionView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height)) {
                 if !isPageRefreshing {
                     isPageRefreshing = true
@@ -209,12 +170,7 @@ extension HomeView {
 // MARK: - Search Delegate
 extension HomeView {
 
-    func searchBarTextDidBeginEditing() {
+    func hideKeyboard() {
         self.searchBar.endEditing(true)
     }
-    
-//    func searchBarCancelButtonClicked() {
-//        //self.searchBar.showsCancelButton = true
-//        self.searchBar.endEditing(true)
-//    }
 }

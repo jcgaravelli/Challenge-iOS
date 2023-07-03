@@ -11,7 +11,7 @@ class HomeViewModel: NSObject {
 
     var coordinatorDelegate: HomeCoordinatorDelegate?
 
-    var characterService: CharacterService?
+    var characterService: CharacterServiceProtocol?
     var character: [CharacterModel] = [] {
         didSet {
             self.reloadCollectionView?()
@@ -44,12 +44,11 @@ class HomeViewModel: NSObject {
 
     // MARK: Update View
     var reloadCollectionView: (() -> Void)?
-    var scrollViewDidScroll: (() -> Void)?
-    var searchBarTextDidBeginEditing: (() -> Void)?
-    var searchBarCancelButtonClicked: (() -> Void)?
-
-    func viewDidLoad() {
-        characterService = CharacterService()
+    var pageRefreshing: (() -> Void)?
+    var hideKeyboard: (() -> Void)?
+    
+    init(service: CharacterServiceProtocol = CharacterService()) {
+        characterService = service
     }
 
     func viewWillAppear() {

@@ -25,7 +25,8 @@ class CharacterDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .white
+        self.navigationController?.navigationBar.tintColor = .systemGreen
         setupView()
     }
     
@@ -33,4 +34,7 @@ class CharacterDetailViewController: UIViewController {
         self.view.addSubviewInsideSafeArea(contentView)
     }
 
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        contentView.reloadStack()
+    }
 }

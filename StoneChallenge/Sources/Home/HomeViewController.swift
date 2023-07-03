@@ -25,9 +25,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .white
+        title = "Rick and Morty"
+        navigationController?.navigationBar.prefersLargeTitles = true
         setupView()
-        viewModel?.viewDidLoad()
     }
     
     func setupView() {

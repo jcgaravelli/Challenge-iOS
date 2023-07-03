@@ -18,9 +18,14 @@ class CharacterViewCell: UICollectionViewCell {
     private lazy var characterNameLabel: UILabel = {
         let label = UILabel()
         label.accessibilityIdentifier = "homeview_TitleLabel"
-        label.backgroundColor = .clear
+        label.backgroundColor = .init(red: 0,
+                                      green: 0,
+                                      blue: 0,
+                                      alpha: 0.7)
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textAlignment = .center
+        label.numberOfLines = 2
+        label.textColor = .systemGreen
         return label
     }()
     
@@ -28,7 +33,6 @@ class CharacterViewCell: UICollectionViewCell {
        let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
-        image.layer.cornerRadius = 5
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -46,16 +50,20 @@ class CharacterViewCell: UICollectionViewCell {
         super.layoutSubviews()
         characterImage.frame = contentView.bounds
     }
-    
+
     private func setupUI() {
-        contentView.addSubviews([characterNameLabel, characterImage])
-        
+        contentView.addSubviews([characterImage,
+                                 characterNameLabel])
+
         characterImage
             .verticalToSuperview()
             .horizontalToSuperview()
         characterNameLabel
-            .topToBottom(of: characterImage)
             .horizontalToSuperview()
+            .bottomToSuperview()
+        
+        contentView.layer.cornerRadius = 5
+        contentView.clipsToBounds = true
     }
 
     func setup(name: String) {

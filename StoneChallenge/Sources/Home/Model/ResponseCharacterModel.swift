@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - ResponseCharacterModel
-struct ResponseCharacterModel: Codable {
+struct ResponseCharacterModel: Decodable {
     let info: Info
     let results: [CharacterModel]
 
@@ -23,17 +23,10 @@ struct ResponseCharacterModel: Codable {
         self.info = try container.decode(Info.self, forKey: .info)
         self.results = try container.decode([CharacterModel].self, forKey: .results)
     }
-
-    func encode(to encoder: Encoder) throws {
-        var container: KeyedEncodingContainer<CodingKeys> = encoder.container(keyedBy: CodingKeys.self)
-        
-        try container.encode(self.info, forKey: .info)
-        try container.encode(self.results, forKey: .results)
-    }
 }
 
 // MARK: - Info
-struct Info: Codable {
+struct Info: Decodable {
     let count, pages: Int
     let next: String
     let prev: String?

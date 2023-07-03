@@ -15,16 +15,16 @@ class ServiceManager {
         
         if !Connectivity.isConnectedToInternet,
            let data = try? StorageCache.retrieve(path) {
-            print("pegou cache")
+            print("catch cache")
             completion(data, nil)
             return
         }
 
         let fullUrl = baseURL + path
         AF.request(fullUrl, method: .get).responseData { (response) in
-            print("chamou api")
+            print("call api")
             if let data = response.data {
-                print("salvou cache")
+                print("save cache")
               _ = try? StorageCache.save(data, as: path)
             }
             completion(response.data, response.error)

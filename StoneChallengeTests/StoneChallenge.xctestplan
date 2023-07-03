@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "1AC55328-8202-454F-8905-28BC4628D166",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:StoneChallenge.xcodeproj",
+        "identifier" : "503565542A5223E7008C1F9A",
+        "name" : "StoneChallengeTests"
+      }
+    }
+  ],
+  "version" : 1
+}

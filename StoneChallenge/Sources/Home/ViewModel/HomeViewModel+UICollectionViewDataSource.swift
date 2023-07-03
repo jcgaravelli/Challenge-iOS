@@ -15,7 +15,8 @@ extension HomeViewModel: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterViewCell", for: indexPath) as? CharacterViewCell else {
+        guard let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterViewCell",
+                                                              for: indexPath) as? CharacterViewCell else {
             return UICollectionViewCell()
         }
         
@@ -29,42 +30,28 @@ extension HomeViewModel: UICollectionViewDataSource {
         
         return myCell
     }
-    
-//    func startAnimating() {
-//        activityIndicatorView.startAnimating()
-//    }
-//    
-//    func stopAnimating() {
-//        activityIndicatorView.stopAnimating()
-//        activityIndicatorView.removeFromSuperview()
-//    }
 }
 
 extension HomeViewModel: UIScrollViewDelegate {
-    
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollViewDidScroll?()
+        pageRefreshing?()
     }
 }
 
 extension HomeViewModel: UISearchBarDelegate {
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBarTextDidBeginEditing?()
+        hideKeyboard?()
     }
-    
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterName = searchText
-        
+
         if searchText.isEmpty {
-            DispatchQueue.main.async { [weak self] in
-                guard let self else { return }
+            DispatchQueue.main.async {
                 searchBar.resignFirstResponder()
             }
         }
-    }
-    
-    func searchBarCancelButtonClicked(_searchBar: UISearchBar) {
-        searchBarCancelButtonClicked?()
     }
 }

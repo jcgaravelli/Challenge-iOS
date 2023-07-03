@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct CharacterModel: Codable {
+struct CharacterModel: Decodable, Equatable {
     var id: Int
     var name: String
     var image: String

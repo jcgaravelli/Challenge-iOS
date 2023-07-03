@@ -38,7 +38,8 @@ class HomeCoordinator: Coordinator {
 extension HomeCoordinator: HomeCoordinatorDelegate {
 
     func goToDetail(with characterDetail: CharacterModel) {
-        let coordinator = CharacterDetailCoordinator(navigationController: navigationController, characterDetail: characterDetail)
+        let coordinator = CharacterDetailCoordinator(navigationController: navigationController,
+                                                     characterDetail: characterDetail)
         coordinator.start()
         childCoordinators.append(coordinator)
     }

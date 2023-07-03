@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-public class StackView {
-    public static func setupStackView(arrangedSubviews: [UIView],
+extension UIStackView {
+    static func setupStackView(arrangedSubviews: [UIView],
                                axis: NSLayoutConstraint.Axis = .horizontal,
                                alignment: UIStackView.Alignment = .fill,
                                distribution: UIStackView.Distribution = .fill,

@@ -7,13 +7,22 @@
 
 import Foundation
 
-class CharacterService: ServiceManager {
+protocol CharacterServiceProtocol {
+    func getCharacters(_ completion: @escaping ([CharacterModel]?, Error?) -> Void)
+}
+
+class CharacterService: CharacterServiceProtocol {
 
     var totalPage = 1
     var currentPage = 1
+    var serviceManager: ServiceManager
 
     var path: String {
         return "character/?page=\(currentPage)"
+    }
+    
+    init(service: ServiceManager = ServiceManager()) {
+        self.serviceManager = service
     }
 
     func getCharacters(_ completion: @escaping ([CharacterModel]?, Error?) -> Void) {
@@ -23,7 +32,7 @@ class CharacterService: ServiceManager {
             return
         }
 
-        getRequest(path: path) { data, error in
+        serviceManager.getRequest(path: path) { data, error in
             guard let data, error == nil else {
                 completion(nil, error)
                 return
@@ -35,7 +44,6 @@ class CharacterService: ServiceManager {
                                                        from: data)
                 self.totalPage = dataCharacter.info.pages
                 self.currentPage += 1
-
                 completion(dataCharacter.results, nil)
             } catch let error {
                 completion(nil, error)
