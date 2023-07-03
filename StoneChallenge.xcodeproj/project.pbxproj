@@ -185,7 +185,6 @@
 			children = (
 				5070CCE52A50D90200E7491A /* Connectivity.swift */,
 				5070CCE32A50CEB500E7491A /* StorageCache.swift */,
-				507CAA602A4AA74C002E5793 /* ServiceManager.swift */,
 				507CAA752A4E7950002E5793 /* CharacterService.swift */,
 			);
 			path = Service;
@@ -221,6 +220,7 @@
 		507CAA6F2A4B99EB002E5793 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				507CAA602A4AA74C002E5793 /* ServiceManager.swift */,
 				507CAA712A4BBBB5002E5793 /* CharacterDetailView.swift */,
 			);
 			path = View;
