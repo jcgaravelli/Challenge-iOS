@@ -424,6 +424,7 @@
 				5112351A6544BE1F121A15CA57793A53 /* WKInterfaceImage+Kingfisher.swift */,
 				45A5A1FB47548487C449FA23BCBC8F38 /* Support Files */,
 			);
+			name = Kingfisher;
 			path = Kingfisher;
 			sourceTree = "<group>";
 		};
@@ -512,6 +513,7 @@
 				F08D7DB331697EC914DB1D9F8F683615 /* Validation.swift */,
 				F12D4F0BEEEDA2A03D8522A064FD57E4 /* Support Files */,
 			);
+			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
