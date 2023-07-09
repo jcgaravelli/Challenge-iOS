@@ -42,7 +42,7 @@ class HomeView: UIView {
     private lazy var statusButtonDead: SelectionButton = {
         let button = SelectionButton(frame: .zero)
         button.setupConfig(tag: FilterType.dead.rawValue,
-                           identifier: "homeview_statusButtonAlive",
+                           identifier: "homeview_statusButtonDead",
                            text: "Dead",
                            actionButton: didTapButton)
         return button

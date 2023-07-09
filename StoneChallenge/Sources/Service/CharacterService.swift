@@ -32,7 +32,7 @@ class CharacterService: CharacterServiceProtocol {
             return
         }
 
-        serviceManager.getRequest(path: path) { data, error in
+        serviceManager.getRequest(path: path) { [weak self] data, error in
             guard let data, error == nil else {
                 completion(nil, error)
                 return
@@ -42,8 +42,8 @@ class CharacterService: CharacterServiceProtocol {
                 let decoder = JSONDecoder()
                 let dataCharacter = try decoder.decode(ResponseCharacterModel.self,
                                                        from: data)
-                self.totalPage = dataCharacter.info.pages
-                self.currentPage += 1
+                self?.totalPage = dataCharacter.info.pages
+                self?.currentPage += 1
                 completion(dataCharacter.results, nil)
             } catch let error {
                 completion(nil, error)

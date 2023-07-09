@@ -13,11 +13,11 @@ extension HomeViewModel {
         guard character.isEmpty || nextPage else {
             return
         }
-        characterService?.getCharacters { (character, error) in
+        characterService?.getCharacters { [weak self] (character, error) in
             guard let character: [CharacterModel] = character else {
                 return
             }
-            self.character.append(contentsOf: character)
+            self?.character.append(contentsOf: character)
         }
     }
 }

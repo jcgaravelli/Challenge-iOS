@@ -16,13 +16,6 @@ struct ResponseCharacterModel: Decodable {
         case info
         case results
     }
-
-    init(from decoder: Decoder) throws {
-        let container: KeyedDecodingContainer<CodingKeys> = try decoder.container(keyedBy: CodingKeys.self)
-
-        self.info = try container.decode(Info.self, forKey: .info)
-        self.results = try container.decode([CharacterModel].self, forKey: .results)
-    }
 }
 
 // MARK: - Info
